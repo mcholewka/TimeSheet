@@ -16,11 +16,11 @@ mongoose.connect(process.env.CONNECTION_STRING, {useNewUrlParser: true, useUnifi
 })
 
 const auth = require('./src/api/auth/auth.routes');
-//const workinghours = require('./src/api/workingHours/workingHours.routes');
+const entries = require('./src/api/entries/entries.routes');
 
 
 app.use('/api/auth', auth);
-//app.use('/api/workinghours', workinghours);
+app.use('/api/entries', entries);
 
 
 app.listen(port, () => {
