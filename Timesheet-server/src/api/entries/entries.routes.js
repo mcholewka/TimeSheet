@@ -58,4 +58,31 @@ router.get('/',veryfy, async (req, res) => {
     }
 });
 
+// Delete specyfic entry
+router.delete("/:id", veryfy, middlewear.getEntry, async (req, res) => {
+    try {
+        await res.entry.remove();
+        res.json({message: 'Entry has been removed'});
+    } catch(err) {
+        res.status(500).send({message: err.message});
+    }
+});
+
+// Patch specyfic entry
+router.patch("/:id", veryfy, middlewear.getEntry, async (req,res) => {
+    try {
+        updatedEntry = await res.entry.updateOne({
+            date: req.body.date,
+            workedHours: req.body.workedHours,
+            projcet: req.body.projcet,
+            task: req.body.task,
+            subtask: req.body.subtask,
+            notes: req.body.notes
+        })
+        res.send(updatedEntry);
+    } catch(err) {
+        res.status(500).send({message: err.message});
+    }
+});
+
 module.exports = router;
