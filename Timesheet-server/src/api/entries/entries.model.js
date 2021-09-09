@@ -25,6 +25,9 @@ const entriesSchema = new mongoose.Schema({
     notes: {
         type: String,
         require: false
+    },
+    user: {
+        type: Schema.Types.ObjectId, ref: 'authUser'
     }
 });
 
