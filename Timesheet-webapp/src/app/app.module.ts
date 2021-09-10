@@ -12,13 +12,17 @@ import { FormsModule } from '@angular/forms';
 import {MaterialModule} from './_shared/material/material.module';
 import { TokenIntercpetor } from './_shared/http/token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EntriesComponent } from './_components/main-page/entries/entries.component';
+import { AddEntryModalComponent } from './_components/main-page/entries/modals/add-entry-modal/add-entry-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    MainPageComponent
+    MainPageComponent,
+    EntriesComponent,
+    AddEntryModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,42 @@
+<div class="mainContainer">
+    <div style="margin-top: 15px; margin-left: 15px;">
+        <p style="font-size: 20px;">Work entries panel:</p> <br>
+    </div>
+    
+    <mat-divider style="margin-left: 15px; margin-right: 15px;"></mat-divider>
+
+    <div style="padding-top: 20px; width: 30%;">
+        <button style="width: 100%; margin-bottom: 15px;" mat-flat-button aria-hidden="true" color="primary">
+            Add new entry    
+        </button>
+    </div>
+
+    <div>
+        <table style="width: 98%;" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="notes">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.notes}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="task">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.task}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="subtask">
+              <th mat-header-cell *matHeaderCellDef> Weight </th>
+              <td mat-cell *matCellDef="let element"> {{element.subtask}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef> Symbol </th>
+              <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+    
+</div>
