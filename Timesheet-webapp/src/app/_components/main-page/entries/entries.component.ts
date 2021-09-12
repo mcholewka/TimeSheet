@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {EntriesService} from "../../../_services/entries/entries.service";
 import {UserEntriesList} from "../../../_models/entries/userEntriesList.model";
 import {UserEntry} from "../../../_models/entries/userEntry.model";
@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {AddEntryModalComponent} from './modals/add-entry-modal/add-entry-modal.component';
 import {DeleteEntryModalComponent} from './modals/delete-entry-modal/delete-entry-modal.component';
 import {EditEntryModalComponent} from './modals/edit-entry-modal/edit-entry-modal.component';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-entries',
@@ -15,6 +16,7 @@ import {EditEntryModalComponent} from './modals/edit-entry-modal/edit-entry-moda
 })
 export class EntriesComponent implements OnInit {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   userEntries: UserEntriesList;
   displayedColumns: string[] = ['date', 'workedHours', 'project', 'task', 'subtask', 'options'];
   dataSource: MatTableDataSource<UserEntry>;
@@ -24,14 +26,19 @@ export class EntriesComponent implements OnInit {
     this.getUserEntries();
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
   getUserEntries() {
     this.entriesService.getUserEntries<UserEntriesList>().subscribe(data=> {
       if(data!=undefined)
       {
         this.userEntries = data;
-        console.log(this.userEntries.entries)
+        console.log(this.userEntries)
       }
       this.dataSource = new MatTableDataSource<UserEntry>(this.userEntries.entries);
+      this.paginator.length = this.userEntries.totalPages;
     })
   }
 

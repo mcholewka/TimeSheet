@@ -37,7 +37,7 @@ router.get('/:id', veryfy, middlewear.getEntry, (req, res) => {
 // Get list of entries for specyfic user with pagination
 router.get('/',veryfy, async (req, res) => {
     
-    const { page = 1, limit = 10 } = req.query;
+    const { page = 1, limit = 5 } = req.query;
     try {
         const currentUserId = (jwt_decode(req.header('auth-token')))._id;
         

@@ -13,7 +13,8 @@ import {UserEntry} from '../../../../../_models/entries/userEntry.model';
 export class EditEntryModalComponent implements OnInit {
 
   currentEntry: UserEntry;
-
+  page: number = 0;
+  
   constructor(public dialogRef: MatDialogRef<EditEntryModalComponent>,
     @Inject(MAT_DIALOG_DATA) public message: string, @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public entriesService: EntriesService) { }
 
