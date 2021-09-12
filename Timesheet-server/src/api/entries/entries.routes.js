@@ -13,7 +13,7 @@ router.post('/', veryfy, async (req, res) => {
         const newEntry = new entriesModel({
             date: req.body.date,
             workedHours: req.body.workedHours,
-            projcet: req.body.projcet,
+            project: req.body.project,
             task: req.body.task,
             subtask: req.body.subtask,
             notes: req.body.notes,
@@ -74,7 +74,7 @@ router.patch("/:id", veryfy, middlewear.getEntry, async (req,res) => {
         updatedEntry = await res.entry.updateOne({
             date: req.body.date,
             workedHours: req.body.workedHours,
-            projcet: req.body.projcet,
+            project: req.body.project,
             task: req.body.task,
             subtask: req.body.subtask,
             notes: req.body.notes

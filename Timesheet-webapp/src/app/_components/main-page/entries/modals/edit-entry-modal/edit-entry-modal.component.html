@@ -1,0 +1,36 @@
+<div style="text-align: center;">
+    
+    <b>Edit entry panel:</b>
+
+    <mat-form-field appearance="fill" style="width: 88%; padding-top: 20px;">
+        <mat-label>Pick date:</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="currentEntry.date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field style="width: 88%;">
+        <input [(ngModel)]="currentEntry.workedHours" style="width: 100%" name="newEntryWorkedHours"  matInput placeholder="Worked hours:">
+    </mat-form-field>
+
+    <mat-form-field style="width: 88%;">
+        <input [(ngModel)]="currentEntry.project" style="width: 100%" name="newEntryProject"  matInput placeholder="Project:">
+    </mat-form-field>
+
+    <mat-form-field style="width: 88%;">
+        <input [(ngModel)]="currentEntry.task" style="width: 100%" name="newEntryTask"  matInput placeholder="Task:">
+    </mat-form-field>
+
+    <mat-form-field style="width: 88%;">
+        <input [(ngModel)]="currentEntry.subtask" style="width: 100%" name="newEntrySubtask"  matInput placeholder="Subtask:">
+    </mat-form-field>
+
+    <mat-form-field style="width: 88%;">
+        <input [(ngModel)]="currentEntry.notes" style="width: 100%" name="newEntryNotes"  matInput placeholder="Notes:">
+    </mat-form-field>
+    
+    <div mat-dialog-actions style="display: flex; justify-content: center;">
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="editEntry()">Add</button>
+    </div>
+</div>

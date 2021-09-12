@@ -8,6 +8,7 @@ import { catchError,  } from 'rxjs/operators';
 import {ResponseWithToken} from "../../_models/response/responseWithToken.model";
 import {ResponseWithUserID} from "../../_models/response/responseWithUserID.model";
 import {UserEntriesList} from "../../_models/entries/userEntriesList.model";
+import {UserEntry} from '../../_models/entries/userEntry.model';
 
 const baseURL = "api/entries";
 
@@ -19,6 +20,26 @@ export class EntriesService {
     public getUserEntries<UserEntriesList>() {
         var url = environment.baseBackendUrl + baseURL;
         return this.http.get<UserEntriesList>(url);
+    }
+
+    public addNewEntry(newEntry: UserEntry) {
+        var url = environment.baseBackendUrl + baseURL;
+        return this.http.post(url, newEntry);
+    }
+
+    public deleteEntry(entryId: string) {
+        var url = environment.baseBackendUrl + baseURL + "/" + entryId;
+        return this.http.delete(url);
+    }
+
+    public getSingleEntry<UserEntry>(entryId: string) {
+        var url = environment.baseBackendUrl + baseURL + "/" + entryId;
+        return this.http.get<UserEntry>(url);
+    }
+
+    public editEntry(entryId: string, editedEntry: UserEntry) {
+        var url = environment.baseBackendUrl + baseURL + "/" + entryId;
+        return this.http.patch(url, editedEntry); 
     }
 
     errorHandler(error: HttpErrorResponse){
