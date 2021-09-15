@@ -10,7 +10,7 @@
     </mat-form-field>
 
     <mat-form-field style="width: 88%;">
-        <input [(ngModel)]="currentEntry.workedHours" style="width: 100%" name="newEntryWorkedHours"  matInput placeholder="Worked hours:">
+        <input type="number" [(ngModel)]="currentEntry.workedHours" style="width: 100%" name="newEntryWorkedHours"  matInput placeholder="Worked hours:">
     </mat-form-field>
 
     <mat-form-field style="width: 88%;">
@@ -31,6 +31,6 @@
     
     <div mat-dialog-actions style="display: flex; justify-content: center;">
         <button mat-button (click)="onNoClick()">Cancel</button>
-        <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="editEntry()">Add</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="editEntry()">Apply</button>
     </div>
 </div>
