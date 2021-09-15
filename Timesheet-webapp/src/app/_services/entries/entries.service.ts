@@ -17,9 +17,14 @@ export class EntriesService {
     
     constructor(private http: HttpClient) { }
 
-    public getUserEntries<UserEntriesList>() {
+    public getUserEntries<UserEntriesList>(limit: number, page: number) {
         var url = environment.baseBackendUrl + baseURL;
-        return this.http.get<UserEntriesList>(url);
+        return this.http.get<UserEntriesList>(url, {
+            params: {
+                limit: limit.toString(),
+                page: page.toString()
+            }
+        });
     }
 
     public addNewEntry(newEntry: UserEntry) {

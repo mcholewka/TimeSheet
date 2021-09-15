@@ -46,12 +46,13 @@ router.get('/',veryfy, async (req, res) => {
         .skip((page-1) * limit)
         .exec();
 
-        const count = await entriesModel.countDocuments();
+        const count = await entriesModel.find({user: currentUserId}).countDocuments();
 
         res.json({
             entries: currentUserEntries,
             totalPages: Math.ceil(count / limit),
-            currentPage: page    
+            currentPage: page,
+            totalItems: count   
         });        
     } catch(err) {
         res.status(400).json({message: err.message});
