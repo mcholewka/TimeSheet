@@ -1,5 +1,5 @@
 <mat-toolbar >
-    <p><button style="margin-top: 10px;" mat-button (click)="sidenav.toggle()"><i class="fas fa-bars"></i></button></p>
+    <p><button style="margin-top: 10px;" (click)="sidenav.toggle()" mat-button><i class="fas fa-bars"></i></button></p>
     Time<b>Sheet</b> 
     <span class="example-fill-remaining-space"></span>
     <span>
@@ -20,9 +20,18 @@
 
 
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
-        <div class="div-roomList">
-           
+    <mat-sidenav #sidenav mode="side" closed class="example-sidenav">
+        <div id="wrapper">
+            <div id="inner1">
+                <button mat-button class="sideNav-buttons">
+                    Entries panel
+                </button>
+            </div>
+            <div id="inner2">
+                <button mat-button class="sideNav-buttons">
+                    Statistics
+                </button>
+            </div>
         </div>
     </mat-sidenav>
     <mat-sidenav-content>

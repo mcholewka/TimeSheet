@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class MainPageComponent implements OnInit {
 
   data: any;
-
+  opened: boolean;
   constructor(public router: Router, private toastr: ToastrService, public userService: UserService) { }
 
   ngOnInit(): void {

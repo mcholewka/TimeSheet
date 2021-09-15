@@ -31,5 +31,21 @@
   left: 50%;
 }
 
+#inner1 {
+  float:left; 
+  height: 65px;
+  width: 100%;
+}
 
-  
+#inner2{
+  float:left; 
+  clear: left;
+  height: 65px;
+  width: 100%;
+}
+
+.sideNav-buttons {
+  width: 100%;
+  height: 100%;
+  font-size: 18;
+}
