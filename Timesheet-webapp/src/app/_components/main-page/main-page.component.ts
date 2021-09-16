@@ -13,6 +13,8 @@ export class MainPageComponent implements OnInit {
 
   data: any;
   opened: boolean;
+  navigation: string = "entries";
+
   constructor(public router: Router, private toastr: ToastrService, public userService: UserService) { }
 
   ngOnInit(): void {
@@ -22,5 +24,13 @@ export class MainPageComponent implements OnInit {
   logout(){
     localStorage.removeItem("token");
     this.router.navigate(['/login']);
+  }
+
+  navigateToEntries() {
+    this.navigation = "entries";
+  }
+
+  navigateToStatistics() {
+    this.navigation = "statistics";
   }
 }

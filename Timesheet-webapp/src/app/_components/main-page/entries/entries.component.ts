@@ -9,6 +9,7 @@ import {DeleteEntryModalComponent} from './modals/delete-entry-modal/delete-entr
 import {EditEntryModalComponent} from './modals/edit-entry-modal/edit-entry-modal.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {PageEvent} from '@angular/material/paginator';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-entries',
@@ -27,7 +28,7 @@ export class EntriesComponent implements OnInit {
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
 
-  constructor(public entriesService: EntriesService, public dialog: MatDialog) { }
+  constructor(public entriesService: EntriesService, public dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -67,6 +68,7 @@ export class EntriesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getUserEntries();
+      this.toastr.success("New entry has been added", 'Success!');
     });
   }
 
@@ -79,6 +81,7 @@ export class EntriesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getUserEntries();
+      this.toastr.success("Entry has been deleted", 'Success!');
     });
   }
 
@@ -91,6 +94,7 @@ export class EntriesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getUserEntries();
+      this.toastr.success("Entry has been edited", 'Success!');
     });
   }
 }

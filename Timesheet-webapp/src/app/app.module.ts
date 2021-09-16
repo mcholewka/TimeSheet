@@ -17,6 +17,7 @@ import { AddEntryModalComponent } from './_components/main-page/entries/modals/a
 import { DeleteEntryModalComponent } from './_components/main-page/entries/modals/delete-entry-modal/delete-entry-modal.component';
 import { EditEntryModalComponent } from './_components/main-page/entries/modals/edit-entry-modal/edit-entry-modal.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { StatisticsComponent } from './_components/main-page/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     EntriesComponent,
     AddEntryModalComponent,
     DeleteEntryModalComponent,
-    EditEntryModalComponent
+    EditEntryModalComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

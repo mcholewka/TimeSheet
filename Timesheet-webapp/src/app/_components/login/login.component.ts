@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserLogin } from 'src/app/_models/user/UserLogin.model';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
-// import {UserService} from "../../_services/user/user.service";
 import { UserService } from 'src/app/_services/user/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
   action: boolean = true;
   actionButtonLabel: string = 'X';
 
-  constructor(public router: Router, public userService: UserService) { }
+  constructor(public router: Router, public userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     
@@ -38,7 +37,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/main']);
       }
     },
-    error=>{this.errorMsg = error.message; console.log(this.errorMsg);
+    error=>{
+      this.errorMsg = error.message;
+      this.toastr.error(this.errorMsg, 'Something went wrong');
     }
     )
   }
