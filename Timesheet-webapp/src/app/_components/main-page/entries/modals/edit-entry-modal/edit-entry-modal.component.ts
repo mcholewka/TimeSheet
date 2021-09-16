@@ -4,6 +4,7 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { MatDialog } from '@angular/material/dialog';
 import {EntriesService} from '../../../../../_services/entries/entries.service';
 import {UserEntry} from '../../../../../_models/entries/userEntry.model';
+import { FormGroup , FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-entry-modal',
@@ -14,12 +15,21 @@ export class EditEntryModalComponent implements OnInit {
 
   currentEntry: UserEntry;
   page: number = 0;
-  
+  entriesForm: FormGroup;
+
   constructor(public dialogRef: MatDialogRef<EditEntryModalComponent>,
     @Inject(MAT_DIALOG_DATA) public message: string, @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public entriesService: EntriesService) { }
 
   ngOnInit(): void {
     this.getEntry();
+    this.entriesForm = new FormGroup({
+      'newEntryDate': new FormControl(null, Validators.required),
+      'newEntryWorkedHours': new FormControl(null, Validators.min(1)),
+      'newEntryProject': new FormControl(null, Validators.required),
+      'newEntryTask': new FormControl(null, Validators.required),
+      'newEntrySubtask': new FormControl(null, null),
+      'newEntryNotes': new FormControl(null, null)
+    });
   }
 
   onNoClick(): void {
@@ -34,7 +44,6 @@ export class EditEntryModalComponent implements OnInit {
 
   editEntry() {
     this.entriesService.editEntry(this.data.entryId, this.currentEntry).subscribe(responseData => {
-
     });
   }
 
