@@ -1,36 +1,46 @@
-<div style="text-align: center;">
-    
-    <b>Add new entry panel:</b>
-
-    <mat-form-field appearance="fill" style="width: 88%; padding-top: 20px;">
-        <mat-label>Pick date:</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="newEntryDate">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field style="width: 88%;">
-        <input type="number" [(ngModel)]="newEntryWorkedHours" style="width: 100%" name="newEntryWorkedHours"  matInput placeholder="Worked hours:">
-    </mat-form-field>
-
-    <mat-form-field style="width: 88%;">
-        <input [(ngModel)]="newEntryProject" style="width: 100%" name="newEntryProject"  matInput placeholder="Project:">
-    </mat-form-field>
-
-    <mat-form-field style="width: 88%;">
-        <input [(ngModel)]="newEntryTask" style="width: 100%" name="newEntryTask"  matInput placeholder="Task:">
-    </mat-form-field>
-
-    <mat-form-field style="width: 88%;">
-        <input [(ngModel)]="newEntrySubtask" style="width: 100%" name="newEntrySubtask"  matInput placeholder="Subtask:">
-    </mat-form-field>
-
-    <mat-form-field style="width: 88%;">
-        <input [(ngModel)]="newEntryNotes" style="width: 100%" name="newEntryNotes"  matInput placeholder="Notes:">
-    </mat-form-field>
-    
-    <div mat-dialog-actions style="display: flex; justify-content: center;">
-        <button mat-button (click)="onNoClick()">Cancel</button>
-        <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="addNewEntry()">Add</button>
+<div>
+    <div style="text-align: center;">
+        <b>Add new entry panel:</b>
     </div>
+
+    <div [formGroup]="entriesForm" style="display: flex; flex-direction: column; align-items: center; width: 80%; margin: 0 auto;">
+        <div style="width: 100%">
+
+            <mat-form-field appearance="fill" style="width: 100%; padding-top: 20px;">
+                <mat-label>Pick date:</mat-label>
+                <input formControlName="newEntryDate" matInput [matDatepicker]="picker" [(ngModel)]="newEntryDate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <small style="text-align: left !important; color: red;" *ngIf="entriesForm.get('newEntryDate').invalid && entriesForm.get('newEntryDate').touched">This field is required</small>
+
+            <mat-form-field style="width: 100%;">
+                <input formControlName="newEntryWorkedHours" type="number" [(ngModel)]="newEntryWorkedHours" style="width: 100%" name="newEntryWorkedHours"  matInput placeholder="Worked hours:" required>
+            </mat-form-field>
+            <small style="text-align: left !important; color: red;" *ngIf="entriesForm.get('newEntryWorkedHours').invalid && entriesForm.get('newEntryWorkedHours').touched">This field must me greater than 0</small>
+        
+            <mat-form-field style="width: 100%;">
+                <input formControlName="newEntryProject" [(ngModel)]="newEntryProject" matInput placeholder="Project:" style="width: 100%">
+            </mat-form-field>
+            <small style="text-align: left !important; color: red;" *ngIf="entriesForm.get('newEntryProject').invalid && entriesForm.get('newEntryProject').touched">This field is required</small>
+            
+            <mat-form-field style="width: 100%;">
+                <input formControlName="newEntryTask" [(ngModel)]="newEntryTask" style="width: 100%" name="newEntryTask"  matInput placeholder="Task:" required>
+            </mat-form-field>
+            <small style="text-align: left !important; color: red;" *ngIf="entriesForm.get('newEntryTask').invalid && entriesForm.get('newEntryTask').touched">This field is required</small>
+        
+            <mat-form-field style="width: 100%;">
+                <input formControlName="newEntrySubtask" [(ngModel)]="newEntrySubtask" style="width: 100%" name="newEntrySubtask"  matInput placeholder="Subtask:">
+            </mat-form-field>
+        
+            <mat-form-field style="width: 100%;">
+                <textarea formControlName="newEntryNotes" [(ngModel)]="newEntryNotes" style="width: 100%" name="newEntryNotes"  matInput placeholder="Notes:"></textarea>
+            </mat-form-field>
+        </div>
+        <div mat-dialog-actions style="display: flex; justify-content: center;">
+            <button mat-button (click)="onNoClick()">Cancel</button>
+            <button [disabled]="entriesForm.invalid" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="addNewEntry()">Add</button>
+        </div>
+    </div>
+    
 </div>

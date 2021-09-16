@@ -16,6 +16,7 @@ import { EntriesComponent } from './_components/main-page/entries/entries.compon
 import { AddEntryModalComponent } from './_components/main-page/entries/modals/add-entry-modal/add-entry-modal.component';
 import { DeleteEntryModalComponent } from './_components/main-page/entries/modals/delete-entry-modal/delete-entry-modal.component';
 import { EditEntryModalComponent } from './_components/main-page/entries/modals/edit-entry-modal/edit-entry-modal.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { EditEntryModalComponent } from './_components/main-page/entries/modals/
     ToastrModule.forRoot(),
     HttpClientModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
