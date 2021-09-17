@@ -27,6 +27,7 @@ export class EntriesComponent implements OnInit {
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
+  addDialog: boolean;
 
   constructor(public entriesService: EntriesService, public dialog: MatDialog, private toastr: ToastrService) { }
 
@@ -63,7 +64,7 @@ export class EntriesComponent implements OnInit {
     const dialogRef = this.dialog.open(AddEntryModalComponent, {
       width: '500px',
       data: {
-
+        result: this.addDialog
       }
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -81,6 +82,7 @@ export class EntriesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getUserEntries();
+      console.log(result)
       this.toastr.success("Entry has been deleted", 'Success!');
     });
   }
@@ -94,6 +96,7 @@ export class EntriesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getUserEntries();
+      
       this.toastr.success("Entry has been edited", 'Success!');
     });
   }

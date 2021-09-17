@@ -19,17 +19,17 @@
 </mat-toolbar>
 
 
-<mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" closed class="example-sidenav">
+<mat-sidenav-container class="example-container" opened="true">
+    <mat-sidenav #sidenav mode="side" class="example-sidenav" opened="true">
         <div id="wrapper">
             <div id="inner1">
-                <button (click)="navigateToEntries()" mat-button class="sideNav-buttons">
-                    Entries panel
+                <button style="text-align:left; padding-left:30px" routerLink="/main/entries" (click)="navigateToEntries()" mat-button class="sideNav-buttons">
+                    <i class="fas fa-atlas" style="padding-right: 10px;"></i> Entries panel
                 </button>
             </div>
             <div id="inner2">
-                <button (click)="navigateToStatistics()" mat-button class="sideNav-buttons">
-                    Statistics
+                <button style="text-align:left; padding-left:30px" routerLink="/main/statistics" (click)="navigateToStatistics()" mat-button class="sideNav-buttons">
+                    <i class="fas fa-chart-bar" style="padding-right: 10px;"></i>Statistics
                 </button>
             </div>
         </div>
