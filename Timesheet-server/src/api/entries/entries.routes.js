@@ -36,16 +36,24 @@ router.get('/:id', veryfy, middlewear.getEntry, (req, res) => {
 
 // Get list of entries for specyfic user with pagination
 router.get('/',veryfy, async (req, res) => {
-    const { page = 1, limit = 5 } = req.query;
+    const { page = 1, limit = 5} = req.query;
     try {
         const currentUserId = (jwt_decode(req.header('auth-token')))._id;
-        
-        const currentUserEntries = await entriesModel.find({user: currentUserId})
+        const currentUserEntries = await entriesModel.find({
+            user: currentUserId,
+            task: { "$regex": req.query.task || "", "$options": "i" }, 
+            project: { "$regex": req.query.project || "", "$options": "i" },
+            date: {
+                $gte: req.query.gte || "1000-06-21T22:00:00.000Z",
+                $lte: req.query.lte || "3000-06-21T22:00:00.000Z",
+              }
+        })
         .limit(limit * 1)
         .skip((page-1) * limit)
         .exec();
 
         const count = await entriesModel.find({user: currentUserId}).countDocuments();
+        //const count = currentUserEntries.length;
 
         res.json({
             entries: currentUserEntries,
