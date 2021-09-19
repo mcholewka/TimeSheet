@@ -28,6 +28,10 @@ export class EntriesComponent implements OnInit {
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
   addDialog: boolean;
+  filterStartDate: Date;
+  filterEndDate: Date;
+  filterProject: string;
+  filterTask: string;
 
   constructor(public entriesService: EntriesService, public dialog: MatDialog, private toastr: ToastrService) { }
 
@@ -41,19 +45,16 @@ export class EntriesComponent implements OnInit {
     this.length = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
-    console.log("length: " + this.length);
-    console.log("pageSize: " + this.pageSize);
-    console.log("pageIndex: " + this.pageIndex);
     
     this.getUserEntries();
   }
 
   getUserEntries() {
-    this.entriesService.getUserEntries<UserEntriesList>(this.pageSize, this.pageIndex + 1).subscribe(data=> {
+    this.entriesService.getUserEntries<UserEntriesList>(this.pageSize, this.pageIndex + 1, this.filterStartDate, this.filterEndDate, this.filterProject, this.filterTask)
+    .subscribe(data=> {
       if(data!=undefined)
       {
         this.userEntries = data;
-        console.log(this.userEntries)
       }
       this.dataSource = new MatTableDataSource<UserEntry>(this.userEntries.entries);
       this.paginator.length = this.userEntries.totalItems;
@@ -82,7 +83,6 @@ export class EntriesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getUserEntries();
-      console.log(result)
       this.toastr.success("Entry has been deleted", 'Success!');
     });
   }
@@ -99,5 +99,17 @@ export class EntriesComponent implements OnInit {
       
       this.toastr.success("Entry has been edited", 'Success!');
     });
+  }
+
+  filter() {
+    this.getUserEntries();
+  }
+
+  clearFilter() {
+    this.filterTask = null;
+    this.filterProject = null;
+    this.filterStartDate = null;
+    this.filterEndDate = null;
+    this.getUserEntries();
   }
 }

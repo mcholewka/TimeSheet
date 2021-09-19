@@ -17,12 +17,16 @@ export class EntriesService {
     
     constructor(private http: HttpClient) { }
 
-    public getUserEntries<UserEntriesList>(limit: number, page: number) {
+    public getUserEntries<UserEntriesList>(limit: number, page: number, startDate?: Date, endDate?: Date, project?: string, task?: string) {
         var url = environment.baseBackendUrl + baseURL;
         return this.http.get<UserEntriesList>(url, {
             params: {
                 limit: limit.toString(),
-                page: page.toString()
+                page: page.toString(),
+                gte: startDate?.toString() || "",
+                lte: endDate?.toString() || "",
+                project: project || "",
+                task: task || ""
             }
         });
     }
