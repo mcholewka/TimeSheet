@@ -2,6 +2,30 @@
     padding: 30px;
 }
 
-.mat-row {
-    min-width: 100%;
+.mat-column-date {
+    flex: 0 0 20% !important;
+    width: 20% !important;
+}
+.mat-column-workedHours {
+    flex: 0 0 10% !important;
+    width: 10% !important;
+}
+
+.mat-column-project {
+    flex: 0 0 15% !important;
+    width: 15% !important;
+}
+.mat-column-task {
+    flex: 0 0 20% !important;
+    width: 20% !important;
+}
+
+.mat-column-subtask {
+    flex: 0 0 20% !important;
+    width: 20% !important;
+}
+.mat-column-options {
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    text-align: right !important;
 }

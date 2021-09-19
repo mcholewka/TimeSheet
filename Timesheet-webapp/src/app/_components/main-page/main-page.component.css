@@ -33,19 +33,21 @@
 
 #inner1 {
   float:left; 
-  height: 65px;
+  height: 40px;
   width: 100%;
+  margin-top: 20px;
 }
 
 #inner2{
   float:left; 
   clear: left;
-  height: 65px;
+  height: 40px;
   width: 100%;
+ 
 }
 
 .sideNav-buttons {
   width: 100%;
   height: 100%;
-  font-size: 20px;
+  font-size: 14px;
 }

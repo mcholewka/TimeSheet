@@ -112,4 +112,8 @@ export class EntriesComponent implements OnInit {
     this.filterEndDate = null;
     this.getUserEntries();
   }
+
+  notes(entryId: string) {
+    
+  }
 }
