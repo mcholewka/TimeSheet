@@ -17,11 +17,12 @@ mongoose.connect(process.env.CONNECTION_STRING, {useNewUrlParser: true, useUnifi
 
 const auth = require('./src/api/auth/auth.routes');
 const entries = require('./src/api/entries/entries.routes');
+const charts = require("./src/api/charts/charts.routes");
 
 
 app.use('/api/auth', auth);
 app.use('/api/entries', entries);
-
+app.use('/api/charts', charts);
 
 app.listen(port, () => {
   console.log("Server has started!");
