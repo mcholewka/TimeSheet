@@ -4,4 +4,15 @@
     </div>
 
     <mat-divider style="margin-left: 15px; margin-right: 15px;"></mat-divider>
+
+    <div style="width: 60%; float: left; padding-top: 20px;">
+        Worked hours statistic by month:
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
 </div>

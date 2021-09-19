@@ -18,6 +18,7 @@ import { DeleteEntryModalComponent } from './_components/main-page/entries/modal
 import { EditEntryModalComponent } from './_components/main-page/entries/modals/edit-entry-modal/edit-entry-modal.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { StatisticsComponent } from './_components/main-page/statistics/statistics.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { StatisticsComponent } from './_components/main-page/statistics/statisti
     HttpClientModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [
     {
