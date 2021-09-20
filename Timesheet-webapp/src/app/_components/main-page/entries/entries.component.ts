@@ -71,7 +71,6 @@ export class EntriesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getUserEntries();
-      this.toastr.success("New entry has been added", 'Success!');
     });
   }
 
@@ -84,7 +83,6 @@ export class EntriesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getUserEntries();
-      this.toastr.success("Entry has been deleted", 'Success!');
     });
   }
 
@@ -97,8 +95,6 @@ export class EntriesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getUserEntries();
-      
-      this.toastr.success("Entry has been edited", 'Success!');
     });
   }
 

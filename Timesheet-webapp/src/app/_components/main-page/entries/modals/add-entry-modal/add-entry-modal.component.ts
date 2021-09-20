@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {EntriesService} from '../../../../../_services/entries/entries.service';
 import {UserEntry} from '../../../../../_models/entries/userEntry.model';
 import { FormGroup , FormControl, Validators} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-entry-modal',
@@ -22,7 +23,8 @@ export class AddEntryModalComponent implements OnInit {
   entriesForm: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<AddEntryModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public message: string, @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public entriesService: EntriesService) { }
+    @Inject(MAT_DIALOG_DATA) public message: string, @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public entriesService: EntriesService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.entriesForm = new FormGroup({
@@ -49,7 +51,7 @@ export class AddEntryModalComponent implements OnInit {
         this.newEntrySubtask,
         this.newEntryNotes))
         .subscribe(respnseData=>{
-
+          this.toastr.success("New entry has been added", 'Success!');
     })
   }
 }

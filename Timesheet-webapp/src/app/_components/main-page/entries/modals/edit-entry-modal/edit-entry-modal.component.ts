@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {EntriesService} from '../../../../../_services/entries/entries.service';
 import {UserEntry} from '../../../../../_models/entries/userEntry.model';
 import { FormGroup , FormControl, Validators} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-entry-modal',
@@ -18,7 +19,8 @@ export class EditEntryModalComponent implements OnInit {
   entriesForm: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<EditEntryModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public message: string, @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public entriesService: EntriesService) { }
+    @Inject(MAT_DIALOG_DATA) public message: string, @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public entriesService: EntriesService, 
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getEntry();
@@ -44,6 +46,7 @@ export class EditEntryModalComponent implements OnInit {
 
   editEntry() {
     this.entriesService.editEntry(this.data.entryId, this.currentEntry).subscribe(responseData => {
+      this.toastr.success("Entry has been edited", 'Success!');
     });
   }
 
