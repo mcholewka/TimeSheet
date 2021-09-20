@@ -3,7 +3,7 @@ Projekt studencki z przedmiotu Aplikacje Internetowe
 
 Technologie:
 - Angular
-- Node.js, Express.js
+- Node.js (v14.17.6), Express.js
 - Baza danych MongoDB
 
 Uruchomienie:
