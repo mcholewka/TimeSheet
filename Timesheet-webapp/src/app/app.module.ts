@@ -19,6 +19,7 @@ import { EditEntryModalComponent } from './_components/main-page/entries/modals/
 import {ReactiveFormsModule} from '@angular/forms';
 import { StatisticsComponent } from './_components/main-page/statistics/statistics.component';
 import { ChartsModule } from 'ng2-charts';
+import { NotesModalComponent } from './_components/main-page/entries/modals/notes-modal/notes-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ChartsModule } from 'ng2-charts';
     AddEntryModalComponent,
     DeleteEntryModalComponent,
     EditEntryModalComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    NotesModalComponent
   ],
   imports: [
     BrowserModule,

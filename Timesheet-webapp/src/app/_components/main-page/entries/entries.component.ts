@@ -10,6 +10,7 @@ import {EditEntryModalComponent} from './modals/edit-entry-modal/edit-entry-moda
 import {MatPaginator} from '@angular/material/paginator';
 import {PageEvent} from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
+import {NotesModalComponent} from "../entries/modals/notes-modal/notes-modal.component";
 
 @Component({
   selector: 'app-entries',
@@ -114,6 +115,13 @@ export class EntriesComponent implements OnInit {
   }
 
   notes(entryId: string) {
-    
+    const dialogRef = this.dialog.open(NotesModalComponent, {
+      width: '500px',
+      data: {
+        entryId: entryId
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 }
