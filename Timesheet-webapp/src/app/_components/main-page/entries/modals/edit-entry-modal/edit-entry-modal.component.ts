@@ -47,6 +47,7 @@ export class EditEntryModalComponent implements OnInit {
   editEntry() {
     this.entriesService.editEntry(this.data.entryId, this.currentEntry).subscribe(responseData => {
       this.toastr.success("Entry has been edited", 'Success!');
+      this.dialogRef.close();
     });
   }
 

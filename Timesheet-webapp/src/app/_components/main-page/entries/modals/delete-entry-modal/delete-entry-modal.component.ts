@@ -25,8 +25,8 @@ export class DeleteEntryModalComponent implements OnInit {
 
   deleteEntry() {
     this.entriesService.deleteEntry(this.data.entryId).subscribe(responseData=> {
-      console.log('deleted');
       this.toastr.info("Entry has been deleted", 'Information');
+      this.dialogRef.close();
     });
   }
 }

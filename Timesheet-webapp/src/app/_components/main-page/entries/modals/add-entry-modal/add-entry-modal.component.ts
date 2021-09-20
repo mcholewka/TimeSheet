@@ -52,6 +52,7 @@ export class AddEntryModalComponent implements OnInit {
         this.newEntryNotes))
         .subscribe(respnseData=>{
           this.toastr.success("New entry has been added", 'Success!');
+          this.dialogRef.close();
     })
   }
 }
