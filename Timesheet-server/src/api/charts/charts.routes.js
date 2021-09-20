@@ -16,11 +16,11 @@ router.get("/",veryfy, async (req,res) => {
                 $match : { user : new mongoose.Types.ObjectId(currentUserId)}} ,
                  {
                      $group: {
-                        _id: { $month: "$date"}, 
+                        _id: { month:{$month: "$date"}, year: {$year: "$date"}}, 
                         total: {$sum: "$workedHours"}
                 }
             }
-        ]);
+        ]).sort("_id");
            
         return res.status(200).json(barChartData);
     } catch(err) {

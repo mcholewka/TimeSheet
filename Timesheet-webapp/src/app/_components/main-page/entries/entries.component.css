@@ -16,16 +16,16 @@
     width: 15% !important;
 }
 .mat-column-task {
-    flex: 0 0 20% !important;
-    width: 20% !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
 }
 
 .mat-column-subtask {
-    flex: 0 0 20% !important;
-    width: 20% !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
 }
 .mat-column-options {
-    flex: 0 0 20% !important;
-    width: 20% !important;
+    flex: 0 0 40% !important;
+    width: 40% !important;
     text-align: right !important;
 }

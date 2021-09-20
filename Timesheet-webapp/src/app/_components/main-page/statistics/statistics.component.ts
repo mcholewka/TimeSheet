@@ -48,7 +48,7 @@ export class StatisticsComponent implements OnInit {
       this.barChartData[0].data = [];
       this.barChart = responseData;
       this.barChart.forEach(element => {
-        this.barChartLabels.push(this.months[element._id-1]);
+        this.barChartLabels.push(this.months[element._id.month-1] + " " + element._id.year);
         this.barChartData[0].data.push(element.total);
       });
     });
