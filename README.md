@@ -1,6 +1,10 @@
 # TimeSheet
 Projekt studencki z przedmiotu Aplikacje Internetowe
 
+Temat:
+
+Aplikacja do raportowania czasu pracy.
+
 Technologie:
 - Angular
 - Node.js (v14.17.6), Express.js
@@ -23,3 +27,13 @@ c) po uruchomieniu obu modułów aplikacja domyślnie będzie dostępna pod adre
 Testowy użytkownik:
 Email: user@mail.com
 Hasło: Welcome12345!
+
+Funkcjonalność:
+
+- Logowanie/ Rejestracja użytkownika
+- Prezentacja instiejących wpisów w formie tabeli
+- Paginacja danych tabeli
+- Filtrowanie tabeli na podstawie: nazwy projektu, zadania, dat z przedziału
+- Dodawanie, edycja, usuwanie wpisów
+- Wykres słupkowy prezentujący podsumowanie ilości przepracowanych godzin w skali miesiąca
+  
