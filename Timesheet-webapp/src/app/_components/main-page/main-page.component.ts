@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit {
   data: any;
   opened: boolean;
   navigation: string = "entries";
+  item: number = 1;
 
   constructor(public router: Router, private toastr: ToastrService, public userService: UserService) { }
 
@@ -32,5 +33,10 @@ export class MainPageComponent implements OnInit {
 
   navigateToStatistics() {
     this.navigation = "statistics";
+  }
+
+  manageMenuStyle(item: number) {
+    console.log(item);
+    this.item = item;
   }
 }

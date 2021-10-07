@@ -1,9 +1,8 @@
-<mat-toolbar >
+<!-- <mat-toolbar >
     <p><button style="margin-top: 10px;" (click)="sidenav.toggle()" mat-button><i class="fas fa-bars"></i></button></p>
     Time<b>Sheet</b> 
     <span class="example-fill-remaining-space"></span>
     <span>
-        <!-- <button mat-flat-button><i style="font-size: 20px;" class="far fa-user"></i></button> -->
         <button style="border: 1px solid #111111;" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <i style="font-size: 20px;" class="fas fa-user-alt"></i>
         </button>
@@ -16,26 +15,54 @@
             </button>
         </mat-menu>
     </span>
-</mat-toolbar>
+</mat-toolbar> -->
 
 
 <mat-sidenav-container class="example-container" opened="true">
     <mat-sidenav #sidenav mode="side" class="example-sidenav" opened="true">
-        <div id="wrapper">
-            <div id="inner1">
-                <button style="text-align:left; padding-left:30px" routerLink="/main/entries" (click)="navigateToEntries()" mat-button class="sideNav-buttons">
-                    <i class="fas fa-atlas" style="padding-right: 10px;"></i> Entries panel
+
+            <div id="container_Logo">
+                Time<b>Sheet</b> 
+            </div>
+
+            <div class="container_Tabs">
+                <button [ngClass]="{'btn_NavigationActive': item === 1, 'btn_NavigationInactive' : item != 1 }" routerLink="/main/statistics" (click)="navigateToStatistics(); manageMenuStyle(1)" mat-button>
+                    <i class="fas fa-home icon"></i>Home
+                </button>
+
+                <button [ngClass]="{'btn_NavigationActive': item === 2, 'btn_NavigationInactive' : item != 2 }" routerLink="/main/entries" (click)="navigateToEntries(); manageMenuStyle(2)" mat-button>
+                    <i class="fas fa-atlas icon"></i> Entries panel
+                </button>
+    
+                <button [ngClass]="{'btn_NavigationActive': item === 3, 'btn_NavigationInactive' : item != 3 }" routerLink="/main/statistics" (click)="navigateToStatistics(); manageMenuStyle(3)" mat-button>
+                    <i class="fas fa-chart-bar icon"></i>Statistics
+                </button>
+    
+                <button [ngClass]="{'btn_NavigationActive': item === 4, 'btn_NavigationInactive' : item != 4 }" routerLink="/main/statistics" (click)="navigateToStatistics(); manageMenuStyle(4)" mat-button>
+                    <i class="fas fa-cogs icon"></i>Settings
                 </button>
             </div>
-            <div id="inner2">
-                <button style="text-align:left; padding-left:30px" routerLink="/main/statistics" (click)="navigateToStatistics()" mat-button class="sideNav-buttons">
-                    <i class="fas fa-chart-bar" style="padding-right: 10px;"></i>Statistics
-                </button>
+            
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <div id="container_optionBar">
+            <div id="container_expansionPanel">
+                <mat-expansion-panel class="expansionPanel mat-elevation-z0">
+                    <mat-expansion-panel-header class="expansionPanel">
+
+                    </mat-expansion-panel-header>
+                
+                   123
+                
+                  </mat-expansion-panel>
             </div>
         </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
+
         <router-outlet></router-outlet>
+
     </mat-sidenav-content>
+
 </mat-sidenav-container>
 
