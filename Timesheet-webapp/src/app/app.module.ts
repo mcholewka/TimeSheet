@@ -20,6 +20,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { StatisticsComponent } from './_components/main-page/statistics/statistics.component';
 import { ChartsModule } from 'ng2-charts';
 import { NotesModalComponent } from './_components/main-page/entries/modals/notes-modal/notes-modal.component';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,15 @@ import { NotesModalComponent } from './_components/main-page/entries/modals/note
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+        }
+    })
   ],
   providers: [
     {
@@ -55,3 +66,7 @@ import { NotesModalComponent } from './_components/main-page/entries/modals/note
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

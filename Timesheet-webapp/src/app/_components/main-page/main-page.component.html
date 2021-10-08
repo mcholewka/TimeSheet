@@ -27,19 +27,19 @@
 
             <div class="container_Tabs">
                 <button [ngClass]="{'btn_NavigationActive': item === 1, 'btn_NavigationInactive' : item != 1 }" routerLink="/main/statistics" (click)="navigateToStatistics(); manageMenuStyle(1)" mat-button>
-                    <i class="fas fa-home icon"></i>Home
+                    <i class="fas fa-home icon"></i>{{ 'sidenav.home' | translate }}
                 </button>
 
                 <button [ngClass]="{'btn_NavigationActive': item === 2, 'btn_NavigationInactive' : item != 2 }" routerLink="/main/entries" (click)="navigateToEntries(); manageMenuStyle(2)" mat-button>
-                    <i class="fas fa-atlas icon"></i> Entries panel
+                    <i class="fas fa-atlas icon"></i>{{ 'sidenav.entries' | translate }}
                 </button>
     
                 <button [ngClass]="{'btn_NavigationActive': item === 3, 'btn_NavigationInactive' : item != 3 }" routerLink="/main/statistics" (click)="navigateToStatistics(); manageMenuStyle(3)" mat-button>
-                    <i class="fas fa-chart-bar icon"></i>Statistics
+                    <i class="fas fa-chart-bar icon"></i>{{ 'sidenav.statistics' | translate }}
                 </button>
     
                 <button [ngClass]="{'btn_NavigationActive': item === 4, 'btn_NavigationInactive' : item != 4 }" routerLink="/main/statistics" (click)="navigateToStatistics(); manageMenuStyle(4)" mat-button>
-                    <i class="fas fa-cogs icon"></i>Settings
+                    <i class="fas fa-cogs icon"></i>{{ 'sidenav.settings' | translate }}
                 </button>
             </div>
             
@@ -48,16 +48,37 @@
     <mat-sidenav-content>
 
         <div id="container_optionBar">
+
+            <div id="container_languages">
+                <mat-expansion-panel class="expansionPanel_languages mat-elevation-z0" [expanded]="translationPanelOpenState">
+                    <mat-expansion-panel-header class="expansionPanel">
+                        <div id="expansionPanel_content2">
+                           <b *ngIf="activeTransalationID==1">EN</b>
+                           <b *ngIf="activeTransalationID==2">PL</b>
+                        </div>
+                    </mat-expansion-panel-header>
+                
+                        <li *ngFor="let translation of translations" (click)="onSelect(translation)">
+                             <button (click)="state()" id="btn_transaltions" mat-flat-button>{{translation.name}}</button>
+                        </li>
+
+                  </mat-expansion-panel>
+            </div>
+
             <div id="container_expansionPanel">
                 <mat-expansion-panel class="expansionPanel mat-elevation-z0">
                     <mat-expansion-panel-header class="expansionPanel">
-
+                        <div id="expansionPanel_content">
+                            <b>{{data.displayName}}</b><br>
+                            <p id="p_email">{{data.email}}</p>
+                        </div>
                     </mat-expansion-panel-header>
-                
-                   123
-                
+
+                        <button class="btn_logout" (click)="logout()" mat-stroked-button color="primary">{{ 'common.logout' | translate }}</button>
+
                   </mat-expansion-panel>
             </div>
+
         </div>
 
         <router-outlet></router-outlet>

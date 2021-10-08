@@ -1,0 +1,12 @@
+{
+    "sidenav": {
+        "home": "Home",
+        "entries": "Entries panel",
+        "statistics": "Statistics",
+        "settings": "Settings"
+    },
+
+    "common": {
+        "logout": "Logout"
+    }
+}

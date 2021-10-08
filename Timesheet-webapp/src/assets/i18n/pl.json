@@ -1,0 +1,12 @@
+{
+    "sidenav": {
+        "home": "Strona główna",
+        "entries": "Panel wpisów",
+        "statistics": "Statystyki",
+        "settings": "Ustawienia"
+    },
+
+    "common": {
+        "logout": "Wyloguj"
+    }
+}

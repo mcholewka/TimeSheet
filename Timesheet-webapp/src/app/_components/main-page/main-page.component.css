@@ -4,7 +4,8 @@
     bottom: 0px;
     left: 0;
     right: 0;
-    background-color: #f7f7f7;
+    /* background-color: #f7f7f7; */
+    background-color: #f2f5fa;
   }
   
 .example-sidenav {
@@ -63,11 +64,11 @@
 #container_optionBar {
   height: 80px;
   display: flex;
-  justify-content: flex-end
+  justify-content: flex-end;
 }
 
 .expansionPanel {
-  background-color: transparent;
+  background-color: white;
   border: none;
 }
 
@@ -75,4 +76,29 @@
   width: 220px;
   padding-right: 20px;
   padding-top: 20px;
+}
+
+#expansionPanel_content {
+  font-size: 14px;
+  vertical-align: middle;
+  padding-top: 15px;
+}
+
+#p_email {
+  font-size: 12px;
+}
+
+#container_languages {
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.btn_logout {
+  height: 35px;
+  width: 100%;
+  color: grey;
 }
