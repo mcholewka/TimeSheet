@@ -23,6 +23,7 @@ import { NotesModalComponent } from './_components/main-page/entries/modals/note
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient} from '@angular/common/http';
+import { NetworkInterceptor } from './_services/loading/network.interceptor';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,11 @@ import {HttpClient} from '@angular/common/http';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenIntercpetor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NetworkInterceptor,
       multi: true
     }
   ],
